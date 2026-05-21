@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutz – LinqLead</title>
+  <meta name="robots" content="noindex" />
+  
+<style>
+  :root {
+    --green: #9fe870;
+    --green-dark: #071108;
+    --dark: #050b14;
+    --text: #071108;
+    --muted: #64748b;
+    --white: #ffffff;
+    --soft: #f1f5ee;
+    --line: rgba(7, 17, 8, 0.1);
+    --shadow: 0 30px 90px rgba(7, 17, 8, 0.12);
+    --max: 980px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:
+      radial-gradient(circle at 0% 5%, rgba(159, 232, 112, 0.20), transparent 28rem),
+      radial-gradient(circle at 100% 12%, rgba(7, 17, 8, 0.08), transparent 26rem),
+      var(--soft);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    width: min(var(--max), calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  .nav-wrap { padding: 22px 0 0; }
+
+  .nav {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    height: 74px;
+    padding: 0 22px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 50px rgba(7, 17, 8, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    backdrop-filter: blur(16px);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 13px;
+    background: var(--green);
+    color: var(--green-dark);
+    display: grid;
+    place-items: center;
+    font-weight: 950;
+    box-shadow: 0 12px 30px rgba(159, 232, 112, 0.42);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 21px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 14px;
+    font-weight: 900;
+    background: var(--green);
+    color: var(--green-dark);
+    box-shadow: 0 16px 34px rgba(159, 232, 112, 0.45);
+  }
+
+  .hero {
+    padding: 46px 0 30px;
+  }
+
+  .hero-box {
+    border-radius: 38px;
+    padding: 64px 52px;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(159, 232, 112, 0.46), transparent 25rem),
+      linear-gradient(135deg, #071108 0%, #0a1727 52%, #10221a 100%);
+    color: var(--white);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+    background-size: 46px 46px;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .hero-box > * { position: relative; z-index: 2; }
+
+  .eyebrow {
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    margin-bottom: 18px;
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.72);
+    font-size: 18px;
+    max-width: 720px;
+  }
+
+  .content {
+    padding: 40px 0 90px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.86);
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 50px rgba(7, 17, 8, 0.06);
+    border-radius: 28px;
+    padding: 38px;
+  }
+
+  h2 {
+    font-size: 28px;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    margin: 30px 0 12px;
+  }
+
+  h2:first-child { margin-top: 0; }
+
+  h3 {
+    font-size: 20px;
+    margin: 22px 0 8px;
+  }
+
+  p, li {
+    color: #334155;
+    font-size: 16px;
+  }
+
+  ul {
+    margin: 10px 0 10px 22px;
+  }
+
+  .notice {
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: rgba(159, 232, 112, 0.18);
+    border: 1px solid rgba(159, 232, 112, 0.35);
+    margin-bottom: 24px;
+  }
+
+  .notice p {
+    color: #25410f;
+    font-weight: 750;
+  }
+
+  footer {
+    background: #050b14;
+    color: rgba(255,255,255,0.58);
+    padding: 34px 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 720px) {
+    .nav { height: auto; min-height: 66px; border-radius: 28px; flex-wrap: wrap; padding: 14px; }
+    .nav-links { display: none; }
+    .hero-box { padding: 44px 24px; border-radius: 28px; }
+    .card { padding: 26px; }
+  }
+</style>
+
+</head>
+<body>
+  
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="index.html" class="logo" aria-label="LinqLead Startseite">
+      <span class="logo-mark">Q</span>
+      <span>LinqLead</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html#funktionen">Funktionen</a>
+      <a href="index.html#ablauf">Ablauf</a>
+      <a href="index.html#preise">Preise</a>
+    </div>
+
+    <a class="btn" href="mailto:platzhalter?subject=Demo%20f%C3%BCr%20LinqLead%20anfragen">Demo anfragen</a>
+  </nav>
+</div>
+
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-box">
+          <div class="eyebrow">Datenschutz</div>
+          <h1>Datenschutzerklärung</h1>
+          <p>Informationen zur Verarbeitung personenbezogener Daten beim Besuch dieser Website.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="container">
+        <div class="card">
+          <div class="notice">
+            <p>Hinweis: Diese Vorlage ist für eine einfache Landingpage ohne Tracking, Cookies und Kontaktformular gedacht. Wenn du später Analytics, Framer/Vercel Tracking, Tally, Typeform, Newsletter, Kalenderbuchung oder ein Formular nutzt, muss diese Erklärung angepasst werden.</p>
+          </div>
+
+          <h2>1. Verantwortlicher</h2>
+          <p>
+            Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br /><br />
+            Tugay Özcan<br />
+            LinqLead<br />
+            Güterstr. 11<br />
+            46049 Oberhausen<br />
+            Deutschland<br /><br />
+            E-Mail: platzhalter<br />
+            Telefon: platzhalter
+          </p>
+
+          <h2>2. Allgemeine Hinweise</h2>
+          <p>
+            Der Schutz deiner personenbezogenen Daten ist uns wichtig. Personenbezogene Daten sind alle Daten,
+            mit denen du persönlich identifiziert werden kannst. Diese Datenschutzerklärung informiert darüber,
+            welche Daten beim Besuch dieser Website verarbeitet werden und zu welchem Zweck.
+          </p>
+
+          <h2>3. Hosting und Server-Logfiles</h2>
+          <p>
+            Beim Besuch dieser Website verarbeitet der technische Hosting-Anbieter automatisch Informationen,
+            die dein Browser übermittelt. Dazu können gehören:
+          </p>
+          <ul>
+            <li>IP-Adresse</li>
+            <li>Datum und Uhrzeit der Anfrage</li>
+            <li>aufgerufene Seite oder Datei</li>
+            <li>Browsertyp und Browserversion</li>
+            <li>verwendetes Betriebssystem</li>
+            <li>Referrer-URL</li>
+          </ul>
+          <p>
+            Die Verarbeitung erfolgt, um die Website technisch bereitzustellen, Stabilität und Sicherheit zu gewährleisten
+            und Missbrauch zu verhindern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
+          </p>
+
+          <h2>4. Kontaktaufnahme per E-Mail</h2>
+          <p>
+            Wenn du uns per E-Mail kontaktierst, verarbeiten wir die von dir übermittelten Daten, zum Beispiel Name,
+            E-Mail-Adresse, Firma und Inhalt deiner Nachricht. Die Verarbeitung erfolgt zur Bearbeitung deiner Anfrage.
+            Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, sofern die Anfrage mit vorvertraglichen oder vertraglichen Maßnahmen zusammenhängt,
+            ansonsten Art. 6 Abs. 1 lit. f DSGVO.
+          </p>
+
+          <h2>5. Cookies und Tracking</h2>
+          <p>
+            Diese einfache Landingpage verwendet aktuell keine eigenen Tracking-Cookies, kein Google Analytics,
+            kein Meta Pixel und kein Newsletter-Tracking. Wenn solche Dienste später eingebunden werden,
+            wird diese Datenschutzerklärung entsprechend erweitert.
+          </p>
+
+          <h2>6. Speicherdauer</h2>
+          <p>
+            Personenbezogene Daten werden nur so lange gespeichert, wie es für den jeweiligen Zweck erforderlich ist
+            oder gesetzliche Aufbewahrungspflichten bestehen.
+          </p>
+
+          <h2>7. Deine Rechte</h2>
+          <p>
+            Du hast nach der DSGVO insbesondere folgende Rechte:
+          </p>
+          <ul>
+            <li>Recht auf Auskunft über die gespeicherten personenbezogenen Daten</li>
+            <li>Recht auf Berichtigung unrichtiger Daten</li>
+            <li>Recht auf Löschung</li>
+            <li>Recht auf Einschränkung der Verarbeitung</li>
+            <li>Recht auf Datenübertragbarkeit</li>
+            <li>Recht auf Widerspruch gegen bestimmte Verarbeitungen</li>
+            <li>Recht auf Widerruf einer erteilten Einwilligung</li>
+          </ul>
+
+          <h2>8. Beschwerderecht bei der Aufsichtsbehörde</h2>
+          <p>
+            Du hast das Recht, dich bei einer Datenschutzaufsichtsbehörde zu beschweren,
+            wenn du der Ansicht bist, dass die Verarbeitung deiner personenbezogenen Daten gegen Datenschutzrecht verstößt.
+          </p>
+
+          <h2>9. Stand</h2>
+          <p>
+            Stand dieser Datenschutzerklärung: 21.05.2026
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 LinqLead. Alle Rechte vorbehalten.</div>
+    <div class="footer-links">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="mailto:platzhalter">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
