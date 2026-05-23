@@ -69,7 +69,7 @@
       height: 760px;
       background:
         linear-gradient(125deg, rgba(5, 11, 20, 0.94), rgba(7, 17, 8, 0.9) 42%, rgba(5, 11, 20, 0.55) 72%, transparent 100%);
-      clip-path: polygon(0 0, 100% 0, 100% 62%, 0 88%);
+      clip-path: polygon(0 0, 100% 0, 100% 56%, 0 78%);
     }
 
     body::after {
@@ -550,7 +550,17 @@
       font-weight: 850;
     }
 
-    section { padding: 88px 0; }
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 88px 0;
+    }
+
+    main,
+    .container {
+      position: relative;
+      z-index: 1;
+    }
 
     .section-head {
       max-width: 790px;
@@ -572,8 +582,16 @@
     .pricing-box .eyebrow,
     .cta-box .eyebrow { color: var(--green); }
 
+    .dark-section h2,
+    .how-box h2,
+    .pricing-box h2,
+    .cta-box h2 {
+      color: rgba(255, 255, 255, 0.95);
+    }
+
     h2 {
       margin-bottom: 16px;
+      color: var(--ink);
       font-size: clamp(34px, 4.3vw, 58px);
       line-height: 1.05;
       letter-spacing: -0.035em;
@@ -588,10 +606,40 @@
 
     .problem-grid,
     .control-grid {
+      position: relative;
+      z-index: 2;
       display: grid;
       grid-template-columns: 0.95fr 1.05fr;
       gap: 56px;
       align-items: center;
+    }
+
+    #problem,
+    .control-section {
+      background:
+        radial-gradient(circle at 88% 12%, rgba(159, 232, 112, 0.13), transparent 24rem),
+        linear-gradient(180deg, rgba(247, 248, 244, 0.92), rgba(233, 239, 227, 0.74));
+      color: var(--ink);
+      isolation: isolate;
+    }
+
+    #problem .container,
+    .control-section .container {
+      z-index: 2;
+    }
+
+    #problem h2,
+    .control-section h2,
+    .stat strong,
+    .chart-title {
+      color: #071108;
+    }
+
+    #problem .text-large,
+    .control-section .text-large,
+    .check-list div,
+    .stat span {
+      color: #334155;
     }
 
     .network-card {
@@ -708,7 +756,8 @@
       padding: 18px;
       border: 1px solid rgba(7, 17, 8, 0.1);
       border-radius: 20px;
-      background: rgba(255,255,255,0.58);
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 16px 42px rgba(7, 17, 8, 0.08);
     }
 
     .stat strong {
@@ -1048,7 +1097,11 @@
 
     .check-list div::before { content: "\2713"; }
 
-    .pricing-section { padding-top: 0; }
+    .pricing-section {
+      padding-top: 72px;
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(7, 17, 8, 0.03), rgba(7, 17, 8, 0));
+    }
 
     .pricing-grid {
       position: relative;
@@ -1302,7 +1355,7 @@
     @media (max-width: 760px) {
       .container,
       .nav { width: min(100% - 28px, var(--max)); }
-      body::before { height: 660px; clip-path: polygon(0 0, 100% 0, 100% 68%, 0 92%); }
+      body::before { height: 620px; clip-path: polygon(0 0, 100% 0, 100% 60%, 0 78%); }
       .nav { border-radius: 26px; align-items: flex-start; }
       .nav-actions .btn-dark { display: none; }
       .nav-actions .btn { min-height: 42px; padding: 0 14px; font-size: 13px; }
@@ -1584,7 +1637,7 @@
               </div>
               <div class="stat">
                 <strong>0</strong>
-                <span>Leadqualitäts-Scores</span>
+                <span>Keine Excel-Listen</span>
               </div>
             </div>
           </div>
@@ -1732,7 +1785,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="control-section">
       <div class="container">
         <div class="control-grid">
           <div class="mockup-light">
